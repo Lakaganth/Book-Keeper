@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import BookContext from "../../context/book/bookContext";
 import BookItem from "./BookItem";
+import Spinner from "../layout/Spinner";
 
 const Books = () => {
   const bookContext = useContext(BookContext);
@@ -25,7 +26,7 @@ const Books = () => {
         )
       ) : (
         <div>
-          <h2>Hello</h2>
+          <Spinner />
         </div>
       )}
     </div>

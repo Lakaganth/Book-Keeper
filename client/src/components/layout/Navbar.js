@@ -9,37 +9,32 @@ const Navbar = () => {
   const authContext = useContext(AuthContext);
   const bookContext = useContext(BookContext);
 
-  const { logout } = authContext;
+  const { logout, isAuthenticated } = authContext;
   const { clearBooks } = bookContext;
 
-  return (
-    <nav className="navbar grid-4">
-      <div className="logo">
-        <Link to="/">
-          <img src={Logo} alt="" />
-        </Link>
-      </div>
-      <div className="register">
-        <Link to="/register">
-          <h4>Register</h4>
-        </Link>
-      </div>
-      <div className="login">
-        <Link to="/login">
-          <h4>Login</h4>
-        </Link>
-      </div>
-      <div
-        className="logout"
-        onClick={() => {
-          logout();
-          clearBooks();
-        }}
-      >
-        <img src={Logout} alt="" />{" "}
-      </div>
-    </nav>
-  );
+  if (isAuthenticated) {
+    return (
+      <nav className="navbar grid-2">
+        <div className="logo">
+          <Link to="/">
+            <img src={Logo} alt="" />
+          </Link>
+        </div>
+
+        <div
+          className="logout"
+          onClick={() => {
+            logout();
+            clearBooks();
+          }}
+        >
+          <img src={Logout} alt="" />{" "}
+        </div>
+      </nav>
+    );
+  }
+
+  return null;
 };
 
 export default Navbar;

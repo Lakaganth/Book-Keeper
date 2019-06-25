@@ -328,12 +328,12 @@ input[type="date"] {
   background: transparent;
   border: 0;
   border-bottom: 1px solid #fff;
-  padding: 1em 0 0.8em;
+  padding: 0.1em 0 0.1em;
   text-align: left;
   font-size: 18px;
   font-family: inherit;
   font-weight: 300;
-  line-height: 1.5;
+  // line-height: 1.5;
   color: #fff;
   outline: none;
 
@@ -374,6 +374,9 @@ button,
   text-align: center;
   width: 80%;
   margin: 2.5em auto;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.26);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.26);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.26);
 }
 
 .back-arrow {
@@ -387,4 +390,24 @@ button,
 .alert-danger {
   background: var(--danger-color);
   color: #fff;
+}
+
+.landingLogo {
+  margin-top: 20vh;
+  width: 100%;
+}
+
+.register {
+  h4 {
+    font-size: 1.8rem;
+  }
+}
+
+.login-container {
+  margin-top: 5vw;
+  h1 {
+  }
+  form {
+    margin-top: 10vh;
+  }
 }
