@@ -1,9 +1,17 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 import Logo from "./logo.svg";
 import Logout from "./logout.svg";
+import AuthContext from "./../../context/auth/authContext";
+import BookContext from "./../../context/book/bookContext";
 
 const Navbar = () => {
+  const authContext = useContext(AuthContext);
+  const bookContext = useContext(BookContext);
+
+  const { logout } = authContext;
+  const { clearBooks } = bookContext;
+
   return (
     <nav className="navbar grid-4">
       <div className="logo">
@@ -21,10 +29,14 @@ const Navbar = () => {
           <h4>Login</h4>
         </Link>
       </div>
-      <div className="logout">
-        <Link to="/about">
-          <img src={Logout} alt="" />{" "}
-        </Link>
+      <div
+        className="logout"
+        onClick={() => {
+          logout();
+          clearBooks();
+        }}
+      >
+        <img src={Logout} alt="" />{" "}
       </div>
     </nav>
   );

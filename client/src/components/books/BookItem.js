@@ -4,11 +4,11 @@ import rightArrow from "./RightArrow.svg";
 import BookContext from "./../../context/book/bookContext";
 
 const BookItem = ({ book }) => {
-  const { id, name, author, genre, completed } = book;
+  const { _id, name, author, genre, completed } = book;
   const bookConext = useContext(BookContext);
   const { deleteBook, setCurrent, clearCurrent } = bookConext;
   const handleDel = () => {
-    deleteBook(id);
+    deleteBook(_id);
     clearCurrent();
   };
   const handleEdit = () => {

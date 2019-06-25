@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Left from "./LeftArrow.svg";
 
 import BookContext from "./../../context/book/bookContext";
 import uuid from "uuid";
 
-const BookForm = () => {
+const BookForm = props => {
   const bookContext = useContext(BookContext);
 
   const { addBook, current, clearCurrent, updateBook } = bookContext;
@@ -43,20 +43,15 @@ const BookForm = () => {
     clearCurrent();
   };
 
-  const returnHome = () => {
-    return <Redirect to="/" />;
-  };
-
   const onSubmit = e => {
     e.preventDefault();
     if (current === null) {
       addBook(book);
-
-      return <Redirect to="/" />;
+      props.history.push("/");
     } else {
       updateBook(book);
       clearBookForm();
-      returnHome();
+      props.history.push("/");
     }
   };
 

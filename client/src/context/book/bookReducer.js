@@ -23,20 +23,23 @@ export default (state, action) => {
     case ADD_BOOK:
       return {
         ...state,
-        books: [action.payload, ...state.books]
+        books: [action.payload, ...state.books],
+        UPDATE_BOOK
       };
     case UPDATE_BOOK:
       return {
         ...state,
         books: state.books.map(book =>
-          book.id === action.payload.id ? action.payload : book
-        )
+          book._id === action.payload._id ? action.payload : book
+        ),
+        loading: false
       };
 
     case DELETE_BOOK:
       return {
         ...state,
-        books: state.books.filter(book => book.id !== action.payload)
+        books: state.books.filter(book => book._id !== action.payload),
+        loading: false
       };
     case SET_CURRENT:
       return {
@@ -46,6 +49,14 @@ export default (state, action) => {
     case CLEAR_CURRENT:
       return {
         ...state,
+        current: null
+      };
+    case CLEAR_BOOKS:
+      return {
+        ...state,
+        books: null,
+        filtered: null,
+        error: null,
         current: null
       };
 
