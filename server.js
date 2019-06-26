@@ -1,10 +1,8 @@
 const express = require("express");
 const connectDB = require("./config/db");
-var cors = require("cors");
 const path = require("path");
 
 const app = express();
-app.use(cors());
 
 app.use(express.json({ extended: false }));
 
@@ -16,9 +14,9 @@ app.use("/api/books", require("./routes/books"));
 
 //Serve Static Assets in Production
 
+// Serve static assets in production
 if (process.env.NODE_ENV === "production") {
-  //SET STATIC FOLDER
-
+  // Set static folder
   app.use(express.static("client/build"));
 
   app.get("*", (req, res) =>
