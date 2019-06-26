@@ -11,7 +11,7 @@ const Home = () => {
   const authContext = useContext(AuthContext);
   const bookContext = useContext(BookContext);
 
-  const { loadUser, user, loading } = authContext;
+  const { loadUser, user, isAuthenticated } = authContext;
   const { getBooks } = bookContext;
 
   useEffect(() => {
