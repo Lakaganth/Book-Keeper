@@ -1,11 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
 
 import AuthContext from "../../context/auth/authContext";
+import AlertContext from "./../../context/alert/alertContext";
 
 const Register = props => {
   const authContext = useContext(AuthContext);
+  const alertContext = useContext(AlertContext);
 
   const { register, error, clearErrors, isAuthenticated } = authContext;
+  const { setAlert } = alertContext;
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -13,6 +16,8 @@ const Register = props => {
     }
 
     if (error === "User Already exists") {
+      setAlert(error, "danger");
+
       clearErrors();
     }
     // eslint-disable-next-line
@@ -32,9 +37,9 @@ const Register = props => {
   const onSubmit = e => {
     e.preventDefault();
     if (name === "" || email === "" || password === "") {
-      console.log("Please enter all fields", "danger");
+      setAlert("Please enter all fields", "danger");
     } else if (password !== password2) {
-      console.log("Passwords do not match", "danger");
+      setAlert("Passwords do not match", "danger");
     } else {
       register({
         name,
@@ -45,7 +50,7 @@ const Register = props => {
   };
 
   return (
-    <div className="container">
+    <div className="container register-container">
       <h1>
         Account <span className="text-primary">Register</span>
       </h1>

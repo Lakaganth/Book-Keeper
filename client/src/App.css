@@ -237,7 +237,6 @@ img {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  padding-top: 5%;
 }
 
 .book-card {
@@ -420,7 +419,7 @@ button,
 }
 
 .back-arrow {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .back-arrow img {
@@ -448,5 +447,15 @@ button,
 
 .login-container form {
   margin-top: 10vh;
+  width: 80%;
+}
+
+.register-container {
+  margin-top: 5vw;
+}
+
+.register-container form {
+  margin-top: 10vh;
+  width: 80%;
 }
 /*# sourceMappingURL=App.css.map */

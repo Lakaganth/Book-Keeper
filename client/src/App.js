@@ -12,22 +12,28 @@ import AuthState from "./context/auth/AuthState";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import LandingPage from "./components/pages/LandingPage";
-import AuthContext from "./context/auth/authContext";
+import AlertState from "./context/alert/AlertState";
+import Alerts from "./components/layout/Alerts";
 
 const App = () => {
   return (
     <AuthState>
       <BookState>
-        <Router>
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/books/add" component={BookForm} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-          </Switch>
-        </Router>
+        <AlertState>
+          <Router>
+            <Navbar />
+            <div className="container">
+              <Alerts />
+            </div>
+            <Switch>
+              <Route exact path="/" component={LandingPage} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/books/add" component={BookForm} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+            </Switch>
+          </Router>
+        </AlertState>
       </BookState>
     </AuthState>
   );
